@@ -14,21 +14,23 @@ public class CreateMenuBoard_Tea extends JPanel {
                              "히비스커스 블랜드 티", "제주 유기 녹차", "유스베리 티"};
 
         for (int i = 0; i < teaNames.length; i++) {
-            JPanel menuBox = new CreatePanel(width/6, height/4 + 30, Color.WHITE);
+            JPanel panelTeaMenu = new CreatePanel(width/6, height/4 + 30, Color.WHITE);
 
-            ImageIcon menuImage = new ImageIcon("./images/button_image_tea/" + teaNames[i] + ".jpg");
-            JButton teaMenuButton = new JButton(menuImage);
-            teaMenuButton.setName(teaNames[i]);
-            teaMenuButton.addActionListener(new payActinonListener());
-            teaMenuButton.setPreferredSize(new Dimension(width/6, height/4));
+            ImageIcon imageTea = new ImageIcon("./images/button_image_tea/" + teaNames[i] + ".jpg");
+            Image imageTeaChanged = imageTea.getImage().getScaledInstance(width/6+10, height/4, Image.SCALE_SMOOTH);
+			
+			JButton buttonTeaMenu = new JButton(new ImageIcon(imageTeaChanged));
+            buttonTeaMenu.setName(teaNames[i]);
+            buttonTeaMenu.addActionListener(new payActinonListenerTea());
+            buttonTeaMenu.setPreferredSize(new Dimension(width/6, height/4));
 
-            JLabel menuName = new JLabel(teaNames[i]);
-            menuName.setFont(new Font("궁서", Font.BOLD, 13));
+            JLabel labelTeaName = new JLabel(teaNames[i]);
+            labelTeaName.setFont(new Font("궁서", Font.BOLD, 13));
 
-            menuBox.add(teaMenuButton);
-            menuBox.add(menuName);
+            panelTeaMenu.add(buttonTeaMenu);
+            panelTeaMenu.add(labelTeaName);
 
-            add(menuBox);
+            add(panelTeaMenu);
         }
 
         setLayout(new FlowLayout(FlowLayout.LEFT, 20, 40));

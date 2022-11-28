@@ -10,22 +10,26 @@ public class CreateMenuBoard_Smoothe extends JPanel{
         setOpaque(true);
         setName("Smoothe");
 
-        String teaNames[] = {"캐모마일 블랜드 티", "유자 민트 티", "얼 그레이 티"};
+        String smootheNames[] = {"딸기 스무디", "키위 스무디", "토마토 스무디", "초록 스무디"};
 
-        for (int i = 0; i < teaNames.length; i++) {
-            JPanel menuBox = new CreatePanel(width/6, height/4 + 30, Color.WHITE);
+        for (int i = 0; i < smootheNames.length; i++) {
+            JPanel panelSmootheMenu = new CreatePanel(width/6, height/4 + 30, Color.WHITE);
 
-            ImageIcon img = new ImageIcon("./images/button_image_tea/" + teaNames[i] + ".jpg");
-            JButton teaMenuButton = new JButton(img);
-            teaMenuButton.setPreferredSize(new Dimension(width/6, height/4));
+            ImageIcon imageSmoothe = new ImageIcon("./images/button_image_smoothe/" + smootheNames[i] + ".jpg");
+            Image imageSmootheChanged = imageSmoothe.getImage().getScaledInstance(width/6+10, height/4, Image.SCALE_SMOOTH);
 
-            JLabel menuName = new JLabel(teaNames[i]);
-            menuName.setFont(new Font("궁서", Font.BOLD, 13));
+			JButton buttonSmootheMenu = new JButton(new ImageIcon(imageSmootheChanged));
+            buttonSmootheMenu.setName(smootheNames[i]);
+            buttonSmootheMenu.addActionListener(new payActinonListenerSmoothe());
+            buttonSmootheMenu.setPreferredSize(new Dimension(width/6, height/4));
 
-            menuBox.add(teaMenuButton);
-            menuBox.add(menuName);
+            JLabel labelSmootheName = new JLabel(smootheNames[i]);
+            labelSmootheName.setFont(new Font("궁서", Font.BOLD, 13));
 
-            add(menuBox);
+            panelSmootheMenu.add(buttonSmootheMenu);
+            panelSmootheMenu.add(labelSmootheName);
+
+            add(panelSmootheMenu);
         }
 
         setLayout(new FlowLayout(FlowLayout.LEFT, 20, 40));
